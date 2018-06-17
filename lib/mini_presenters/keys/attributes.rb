@@ -1,5 +1,5 @@
 module MiniPresenters
-  module Presenters
+  module Keys
     module Attributes
       def self.included(base)
         base.send :include, InstanceMethods
@@ -14,15 +14,8 @@ module MiniPresenters
           @attribute_groups << [args, opts]
         end
 
-        def extract_options!(args)
-          return [args, {}] unless args.last.is_a?(Hash)
-
-          opts = args.pop
-          [args, opts]
-        end
-
         def attribute_groups
-          @attribute_groups
+          @attribute_groups || []
         end
       end
 
